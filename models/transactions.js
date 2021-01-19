@@ -21,15 +21,14 @@ const transactionModel = MYSQLService.define('transactions', {
   },
   date: {
     type: Sequelize.DATE,
-    allowNull: false,
-    defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+    allowNull: false
   },
   type: {
     type: Sequelize.ENUM('INGRESS', 'EGRESS'),
     allowNull: false
   },
   category: {
-    type: Sequelize.ENUM('FOODS, BILLS, TRANSPORTS, TRANSFERS, OTHERS'),
+    type: Sequelize.ENUM('FOODS', 'BILLS', 'TRANSPORTS', 'TRANSFERS', 'OTHERS'),
     allowNull: true
   }
 })

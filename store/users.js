@@ -6,22 +6,14 @@ class UserStore {
   }
 
   async findOne (where) {
-    try {
-      const { dataValues: user } = await this.table.findOne({ where })
-      return user
-    } catch (error) {
-      return null
-    }
+    const user = await this.table.findOne({ where, raw: true })
+    return user
   }
 
   async create (newUser) {
-    const {
-      dataValues: {
-        password,
-        ...createdUser
-      }
-    } = await this.table.create(newUser)
-    return createdUser
+    const createdUser = await this.table.create(newUser)
+    const { password, ...user } = createdUser.get({ plain: true })
+    return user
   }
 }
 

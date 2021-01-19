@@ -7,7 +7,8 @@ const MySQLService = new Sequelize(MYSQL.DATABASE, MYSQL.USER, MYSQL.PASSWORD, {
   dialect: 'mysql',
   define: {
     timestamps: false,
-    freezeTableName: true
+    freezeTableName: true,
+    logging: false
   }
 })
 
