@@ -8,7 +8,7 @@ const { getQuery, idParam, createBody, updateBody } = require('../utils/schema/t
 const router = express.Router()
 const transactionsService = new TransactionsService()
 
-router.get('/', verifyToken, validateData(getQuery), async (req, res) => {
+router.get('/', verifyToken, validateData(getQuery, 'query'), async (req, res) => {
   try {
     const data = await transactionsService.getTransactions(req.user, req.query)
     Response.success(res, data, 200)

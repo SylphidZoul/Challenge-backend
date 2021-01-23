@@ -20,7 +20,7 @@ const transactionModel = MYSQLService.define('transactions', {
     allowNull: false
   },
   date: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: false
   },
   type: {

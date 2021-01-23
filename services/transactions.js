@@ -21,9 +21,7 @@ class TransactionsService {
     const { limit, page, ...filters } = query
     const where = { ...filters, userId: user.id }
 
-    const transactionsList = await this.store.find(null, where, ['date', 'DESC'], limit, page)
-
-    if (transactionsList.length === 0) throw new Error('There are not any transactions yet!')
+    const transactionsList = await this.store.find(null, where, [['date', 'desc'], ['id', 'desc']], limit, page)
 
     const actualBalance = await this.getActualBalance(user.id)
 
@@ -57,7 +55,7 @@ class TransactionsService {
     const wasDeleted = await this.store.delete(where)
     if (!wasDeleted) throw new Error('The transaction could not be deleted!')
 
-    return { deletedTransaction: `The transaction with id ${idObject.id} was deleted!` }
+    return { deletedTransaction: idObject.id }
   }
 }
 

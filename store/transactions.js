@@ -5,12 +5,18 @@ class TransactionStore {
     this.table = transactionModel
   }
 
-  async find (attributes, where, orderBy, limitBy, page) {
-    const order = orderBy ? [orderBy] : null
+  async find (attributes, where, order, limitBy, page) {
     const limit = limitBy ? parseInt(limitBy) : null
-    const offset = limit & page ? limit * (parseInt(page) - 1) : 0
+    const offset = (limit && page) ? limit * (parseInt(page) - 1) : 0
+    const transactions = await this.table.findAll({
+      attributes,
+      offset,
+      limit,
+      where,
+      order,
+      raw: true
+    })
 
-    const transactions = await this.table.findAll({ attributes, where, order, limit, offset, raw: true })
     return transactions
   }
 
