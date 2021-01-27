@@ -16,5 +16,9 @@ module.exports = {
   },
   SENTRY: {
     DSN: process.env.SENTRY_DSN
+  },
+  CORS: {
+    ORIGIN: process.env.CORS_ORIGIN,
+    optionsSuccessStatus: 200
   }
 }

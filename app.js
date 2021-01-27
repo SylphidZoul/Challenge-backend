@@ -3,10 +3,11 @@ const cors = require('cors')
 const handleParserError = require('./middleware/handleParserError')
 const usersRouter = require('./routes/users')
 const transactionsRouter = require('./routes/transactions')
+const { CORS } = require('./config')
 
 const app = express()
 
-app.use(cors())
+app.use(cors(CORS))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(handleParserError)
