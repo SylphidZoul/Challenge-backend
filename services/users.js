@@ -17,7 +17,7 @@ class UsersService {
 
     const { password, ...userData } = user
 
-    const token = jwt.sign(userData, SECRET, { expiresIn: '1d' })
+    const token = jwt.sign(userData, SECRET, { expiresIn: '30d' })
 
     return { userData, token }
   }
@@ -32,7 +32,7 @@ class UsersService {
     }
 
     const createdUser = await this.store.create(newUser)
-    const token = jwt.sign(createdUser, SECRET, { expiresIn: '1d' })
+    const token = jwt.sign(createdUser, SECRET, { expiresIn: '30d' })
 
     return { userData: createdUser, token }
   }

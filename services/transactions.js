@@ -23,7 +23,7 @@ class TransactionsService {
 
     const transactionsList = await this.store.find(null, where, [['date', 'desc'], ['id', 'desc']], limit, page)
 
-    const actualBalance = await this.getActualBalance(user.id)
+    const actualBalance = (query.page === '1') ? await this.getActualBalance(user.id) : null
 
     return { transactionsList, actualBalance }
   }
@@ -32,7 +32,7 @@ class TransactionsService {
     const newTransaction = {
       ...body,
       userId: user.id,
-      date: body.date || Date.now()
+      date: body.date || new Date()
     }
 
     const createdTransaction = await this.store.create(newTransaction)

@@ -23,14 +23,14 @@ describe('Transactions endpoint /transactions', () => {
       done()
     })
 
-    it('Should complains about the body', async (done) => {
+    it('Should complains about the amount', async (done) => {
       const response = await request
         .post('/transactions')
         .auth(TOKEN, BEARER)
         .send({ concept: 'Test', amount: 'testAmount' })
 
       expect(response.status).toBe(400)
-      expect(response.body.data).toBe('The amount is not valid or not allowed.')
+      expect(response.body.data).toBe('The amount cannot be negative or greater than 8 digits.')
       done()
     })
 
@@ -121,7 +121,7 @@ describe('Transactions endpoint /transactions', () => {
 
     expect(response.status).toBe(200)
     expect(response.body.data.deletedTransaction)
-      .toMatch(`The transaction with id ${testTransactionId} was deleted!`)
+      .toMatch(`${testTransactionId}`)
     done()
   })
 })
