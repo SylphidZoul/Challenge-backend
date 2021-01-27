@@ -2,7 +2,7 @@ require('dotenv').config()
 
 module.exports = {
   API: {
-    PORT: process.env.API_PORT
+    PORT: process.env.PORT
   },
   MYSQL: {
     HOST: process.env.MYSQL_HOST,

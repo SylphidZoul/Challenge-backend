@@ -1,7 +1,10 @@
 {
   "name": "challengejs-backend",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
+  "main": "index.js",
+  "author": "SylphidZoul",
+  "license": "MIT",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
