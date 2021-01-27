@@ -13,5 +13,8 @@ module.exports = {
   },
   JWT: {
     SECRET: process.env.JWT_SECRET
+  },
+  SENTRY: {
+    DSN: process.env.SENTRY_DSN
   }
 }
